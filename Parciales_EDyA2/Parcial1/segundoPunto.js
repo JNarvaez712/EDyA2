@@ -71,8 +71,10 @@ tree.insert(10);
 tree.insert(5);
 tree.insert(15);
 tree.insert(3);
-tree.insert();
+tree.insert(7);
 tree.insert(12);
 tree.insert(18);
 
 console.log("La altura del arbol es:", tree.height()); //La altura del arbol es: 2
+
+
