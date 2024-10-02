@@ -1,0 +1,58 @@
+.App {
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.calculadora {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  margin: auto;
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+
+.display{
+  background-color: #222;
+  color: #fff;
+  text-align: right;
+  padding: 20px;
+  font-size: 2em;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.botones {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fila-superior, .fila-inferior {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.fila-superior, .boton {
+  margin-right: 10px;
+}
+
+.boton {
+  padding: 20px;
+  font-size: 1.5em;
+  cursor: pointer;
+  background-color: #ddd;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.boton:hover {
+  background-color: #bbb;
+  transform: scale(1.05);
+}
