@@ -2,7 +2,7 @@ import React from 'react';
 import {useCounter} from '../hooks/useCounter'
 import { useFetch } from '../hooks/useFetch';
 
-export const MultipleCustomHooks = () =>{
+export const MultipleCustomHooks = () => {
     const {counter, increment} = useCounter(1)
     const {data, isLoading, hasError} = useFetch(`https://pokeapi.co/api/v2/pokemon/${counter}`)
 
@@ -13,18 +13,23 @@ export const MultipleCustomHooks = () =>{
 
             {
                 isLoading ? (
-                    <div className='alert alert-infor text center'>
+                    <div className='alert alert-info text-center'>
                         Loading...
+                    </div>
+                ) : hasError ? (
+                    <div className='alert alert-danger text-center'>
+                        Error: {hasError.message}
                     </div>
                 ) : (
                     <blockquote className='blockquote text-end'>
-                        <p className='mb-1'>{data[0]?.quote}</p>
-                        <footer className='blockquote-footer'>{data[0]?.author}</footer>
+                        <p className='mb-1'>{data.name}</p>
+                        <img src={data.sprites.front_default} alt={data.name} />
+                        <footer className='blockquote-footer'>Altura: {data.height}, Peso: {data.weight}</footer>
                     </blockquote>
                 )
             }
 
-            <button className='btn btn-primary' onClick={() => increment}> Next Quote</button>
+            <button className='btn btn-primary' onClick={() => increment()}>Siguiente</button>
         </>
     )
 }
