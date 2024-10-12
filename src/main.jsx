@@ -2,10 +2,10 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
-import { useFetch } from './hooks/useFetch.jsx'
+import ComponentApp from './components/ComponentApp.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <useFetch />
+    <ComponentApp />
   </React.StrictMode>,
 )
