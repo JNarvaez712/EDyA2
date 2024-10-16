@@ -1,9 +1,9 @@
 import React, {createContext, useContext, useState} from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import NavComponent from './components/NavComponent'
-import Home from './Home'
-import About from './About'
-import Contact from './Contact'
+import Home from './pages/Home'
+import About from './pages/About'
+import Contact from './pages/Contact'
 import './App.css'
 
 const AppContext = createContext()
