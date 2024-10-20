@@ -1,34 +1,23 @@
-import React, {createContext, useContext, useState} from 'react'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import NavComponent from './components/NavComponent'
-import Home from './pages/Home'
-import About from './pages/About'
-import Contact from './pages/Contact'
+import React from 'react'
+import { Routes, Route } from 'react-router-dom'
+import { AuthProvider } from './context/AuthContext'
+import PrivateRoute from './components/PrivateRoute'
+import Home from './components/Home'
+import Login from './components/Login'
+import Dashboard from './components/Dashboard'
 import './App.css'
 
-const AppContext = createContext()
-
-const AppProvider = ({children}) => {
-  const [state, setState] = useState({})
+const App = () => {
   return (
-    <AppContext.Provider value={{state, setState}}>
-      {children}
-    </AppContext.Provider>
-  )
-}
-
-const App = () => (
-  <AppProvider>
-    <Router>
-      <NavComponent />
+    <AuthProvider>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<Login />} />
+        <Route path='/dashboard' element={<PrivateRoute><Dashboard /></PrivateRoute>} />
       </Routes>
-    </Router>
-  </AppProvider>
-)
+    </AuthProvider>
+  )
+   
+}
 
 export default App
-export {AppContext, useContext}
