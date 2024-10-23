@@ -23,7 +23,7 @@ const authReducer = (state, action) => {
                 isAuthenticated: false,
                 username: null
             }
-        case 'UPDATE_LAST_VISITED_PAGE':
+        case 'SET_LAST_VISITED_PAGE':
             return {
                 ...state,
                 lastVisitedPage: action.payload
@@ -38,26 +38,21 @@ export const AuthProvider = ({ children }) => {
     const navigate = useNavigate();
 
     const login = (username) => {
-        console.log('Logging in:', username)
         dispatch({ type: 'LOGIN', payload: { username } });
-        const lastPage = localStorage.getItem('lastVisitedPage') || '/';
-        navigate(lastPage);
+        navigate(state.lastVisitedPage);
     } 
 
     const logout = () => {
-        console.log('Logging out')
         dispatch({ type: 'LOGOUT' });
         navigate('/');
     }
 
-    const setLastPage = (page) => {
-        console.log('Setting last page:', page)
-        dispatch({ type: 'UPDATE_LAST_VISITED_PAGE', payload: page });
-        localStorage.setItem('lastVisitedPage', page);
+    const setLastVisitedPage = (page) => {
+        dispatch({ type: 'SET_LAST_VISITED_PAGE', payload: page });
     }
 
     return (
-        <AuthContext.Provider value={{ ...state, login, logout, setLastPage }}>
+        <AuthContext.Provider value={{ ...state, login, logout, setLastVisitedPage }}>
             {children}
         </AuthContext.Provider>
     )

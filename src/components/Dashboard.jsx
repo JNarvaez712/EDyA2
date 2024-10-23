@@ -4,8 +4,6 @@ import { useAuth } from '../context/AuthContext';
 const Dashboard = () => {
     const { username, logout } = useAuth();
 
-    console.log('Dashboard render:', {username});
-
     return (
         <div className='dashboard-page'>
             <h2>Panel de control</h2>
