@@ -23,7 +23,7 @@ const Dashboard = () => {
                     <p>Bienvenido, {username}</p>
                     <p>Contador: {count}</p>
                     <button onClick={() => dispatch(decrement())}>Decrementar</button>
-                    <button onClick={() => dispatch(incrementBy(5))}>Incrementar por 5</button>
+                    <button onClick={() => dispatch(incrementBy(1))}>Incrementar</button>
                     <button onClick={handleLogout}>Cerrar sesión</button>
                 </>
             ) : (
