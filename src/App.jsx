@@ -13,7 +13,7 @@ const App = () => {
     <div>
       {isAuthenticated ? (
         <div>
-          <h1>Bienevenido, {user.email}</h1>
+          <h1>Bienvenido, {user.email}</h1>
           <Logout />
         </div>
       ) : (
