@@ -1,29 +1,30 @@
-import React, { useState } from "react";
-import { useAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginWithEmail, loginWithGoogle } from '../redux/authActions';
 
 const Login = () => {
-    const [username, setUsername] = useState('');
-    const { login } = useAuth();
-    const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
+  const { loading, error } = useSelector((state) => state.auth);
 
-    const handleLogin = () => {
-        login(username);
-        navigate('/dashboard');
-    }
+  const handleEmailLogin = () => {
+    dispatch(loginWithEmail(email, password));
+  };
 
-    return (
-        <div className="login-page">
-            <h2>Login</h2>
-            <input 
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                placeholder="Nombre de usuario" 
-            />
-            <button onClick={handleLogin}>Iniciar Sesión</button>
-        </div>
-    )
-}
+  const handleGoogleLogin = () => {
+    dispatch(loginWithGoogle());
+  };
+
+  return (
+    <div>
+      <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
+      <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+      <button onClick={handleEmailLogin} disabled={loading}>Iniciar sesión con Email</button>
+      <button onClick={handleGoogleLogin} disabled={loading}>Iniciar sesión con Google</button>
+      {error && <p>{error}</p>}
+    </div>
+  );
+};
 
 export default Login;

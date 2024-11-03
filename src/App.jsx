@@ -1,27 +1,26 @@
-import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { AuthProvider } from './context/AuthContext'
-import PrivateRoute from './components/PrivateRoute'
-import Home from './components/Home'
-import Login from './components/Login'
-import Dashboard from './components/Dashboard'
-import './App.css'
+import React, { useMemo } from 'react';
+import { useSelector } from 'react-redux';
+import Login from './components/Login';
+import Logout from './components/Logout';
+import './App.css';
 
 const App = () => {
-  return (
-    <AuthProvider>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path='/dashboard' element={
-          <PrivateRoute>
-            <Dashboard />
-          </PrivateRoute>
-        } />
-      </Routes>
-    </AuthProvider>
-  )
-   
-}
+  const user = useSelector((state) => state.auth.user);
 
-export default App
+  const isAuthenticated = useMemo(() => !!user, [user]);
+
+  return (
+    <div>
+      {isAuthenticated ? (
+        <div>
+          <h1>Bienevenido, {user.email}</h1>
+          <Logout />
+        </div>
+      ) : (
+        <Login />
+      )}
+    </div>
+  );
+};
+
+export default App;
