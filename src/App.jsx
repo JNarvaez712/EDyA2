@@ -1,27 +1,14 @@
-import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { AuthProvider } from './context/AuthContext'
-import PrivateRoute from './components/PrivateRoute'
-import Home from './components/Home'
-import Login from './components/Login'
-import Dashboard from './components/Dashboard'
-import './App.css'
+import React from 'react';
+import DeleteImage from './components/DeleteImage';
+import './App.css';
 
 const App = () => {
   return (
-    <AuthProvider>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path='/dashboard' element={
-          <PrivateRoute>
-            <Dashboard />
-          </PrivateRoute>
-        } />
-      </Routes>
-    </AuthProvider>
-  )
-   
-}
+    <div>
+      <h1>Mi Aplicación</h1>
+      <DeleteImage />
+    </div>
+  );
+};
 
-export default App
+export default App;
