@@ -14,7 +14,7 @@ export const MultipleCustomHooks = () => {
 
     return (
         <>
-            <h1>MultipleCustomHooks</h1>
+            <h1>Lista de Pokemones</h1>
             <hr />
 
             {
